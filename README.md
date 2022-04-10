@@ -6,6 +6,8 @@
 
 An open sourced Android project constains a story book named "Twenty First Century Farm".
 
+The app can be downloaded from the [Google Play](https://play.google.com/store/apps/details?id=com.artlvr.animalfarm).
+
 ## Technical scopes
 
 The project has been built up using the following tools:
