@@ -19,7 +19,7 @@ class PoetryPageTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private var mockPoetry = Poetry(
+    private val mockPoetry = Poetry(
         name = "Animal Farm",
         sections = listOf(
             Poetry.Section(
@@ -40,12 +40,6 @@ class PoetryPageTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.artlvr.animalfarm", appContext.packageName)
-    }
-
-    fun setPoetry() {
-        composeTestRule.setContent {
-            PoetryPage(poetry = mockPoetry)
-        }
     }
 
     @Test
@@ -73,5 +67,11 @@ class PoetryPageTest {
             .assertIsNotDisplayed()
         composeTestRule.onNodeWithText("Prefix")
             .assertExists()
+    }
+
+    private fun setPoetry() {
+        composeTestRule.setContent {
+            PoetryPage(poetry = mockPoetry)
+        }
     }
 }
