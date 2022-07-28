@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        compose_version = '1.2.0-rc03'
+        compose_version = '1.2.0'
     }
     dependencies {
         classpath 'com.google.googlejavaformat:google-java-format:1.15.0'
