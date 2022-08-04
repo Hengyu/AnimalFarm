@@ -12,7 +12,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.LocalDate
+import java.util.GregorianCalendar
 
 @RunWith(AndroidJUnit4::class)
 class PoetryPageTest {
@@ -25,12 +25,12 @@ class PoetryPageTest {
             Poetry.Section(
                 title = "Prefix",
                 content = "Hello",
-                date = LocalDate.of(2022, 2, 15)
+                date = GregorianCalendar(2022, 2, 15).time
             ),
             Poetry.Section(
                 title = "Section 1",
                 content = "Android Project Ready to Go 🚀",
-                date = LocalDate.of(2022, 2, 15)
+                date = GregorianCalendar(2022, 2, 15).time
             )
         )
     )

@@ -1,7 +1,7 @@
 package com.artlvr.animalfarm.book
 
 import com.artlvr.animalfarm.poetry.Poetry
-import java.time.LocalDate
+import java.util.GregorianCalendar
 
 class AnimalFarmBook {
     companion object {
@@ -20,7 +20,7 @@ class AnimalFarmBook {
 
                             Ready, Set, Go 🚀
                         """.trimIndent(),
-                        date = LocalDate.of(2022, 3, 16)
+                        date = GregorianCalendar(2022, 3, 16).time
                     ),
                     Poetry.Section(
                         title = "故事的开始",
@@ -35,7 +35,7 @@ class AnimalFarmBook {
 
                             起初，几乎全体动物都相信这些规则并一直遵守着；农场就这样稳定运行了许多年，直到一只羊的出现。
                         """.trimIndent(),
-                        date = LocalDate.of(2020, 9, 7)
+                        date = GregorianCalendar(2020, 9, 7).time
                     ),
                     Poetry.Section(
                         title = "园长的加入",
@@ -46,35 +46,28 @@ class AnimalFarmBook {
 
                             潘牧 牧潘、牧潘 潘牧，这两个字折磨着我的心扉。按照南洋的习俗，名在前姓在后，那就是牧潘；按照老祖宗的规矩，姓在前名在后，那就是潘牧。还是按照老祖宗的来吧，潘牧！后文简称：PM。
                         """.trimIndent(),
-                        date = LocalDate.of(2020, 9, 7)
+                        date = GregorianCalendar(2020, 9, 7).time
                     ),
                     Poetry.Section(
                         title = "重要的事情",
                         content = """
                             随着农场主入股澳羊草场，潘牧走马上任21世纪农场的主席。第一天召开动物大会，PM 只说了三件事情：1. 增长；2. 增长；3. 还是TM 的增长。小动物们似懂非懂，老动物们将信将疑，而聪明的🐷在一旁👏。
                         """.trimIndent(),
-                        date = LocalDate.of(2020, 9, 8)
+                        date = GregorianCalendar(2020, 9, 8).time
                     ),
                     Poetry.Section(
                         title = "All hands",
                         content = """
                             PM 问还有谁有问题，没有一个动物说话。他停顿了会儿，换了种方式问：“Does anyone have any questions？”此时，一只新来的小鸟站起来说：“咱们要怎么做增长呀？”PM：“我的朋友，这是个很好的问题。时间不多了，我们把这个问题留在下次动物大会说吧。”随着一阵阵👏，第一次动物大会结束。动物们回到各自岗位，继续做着自己的事情。
                         """.trimIndent(),
-                        date = LocalDate.of(2020, 9, 9)
+                        date = GregorianCalendar(2020, 9, 9).time
                     ),
                     Poetry.Section(
                         title = "Επιμηθέας",
                         content = """
                             这些日子 PM 和🐷走的很近，有时候会消失在大伙视野中随后进入茅房商量着什么。大伙觉得很奇怪，PM 作为领导者没有那么透明了，但也不好说什么。这种情况一直持续到第二次全体动物大会的召开。“我朋友们，欢迎各位参加本次动物大会。本次会议要宣布一件事情，下面有请负责农场体验的佩奇来宣布。”PM说完后将话筒递给了佩奇。“谢谢潘牧，接下来由我介绍新版的《动物手册》。”佩奇话音刚落，整个会议不安静了，能明显听到一些动物的窃窃私语。
                         """.trimIndent(),
-                        date = LocalDate.of(2020, 9, 10)
-                    ),
-                    Poetry.Section(
-                        title = "The Chapters Continue",
-                        content = """
-                            未完待续...
-                        """.trimIndent(),
-                        date = LocalDate.of(2022, 3, 17)
+                        date = GregorianCalendar(2020, 9, 10).time
                     )
                 )
             )

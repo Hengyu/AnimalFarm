@@ -14,6 +14,6 @@ class AnimalFarmBookTest {
 
     @Test
     fun animalFarm_sections() {
-        assertEquals(7, animalFarm.sections.count())
+        assertEquals(6, animalFarm.sections.count())
     }
 }

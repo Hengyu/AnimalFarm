@@ -35,8 +35,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import java.text.SimpleDateFormat
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -110,7 +109,7 @@ fun PoetryPage(poetry: Poetry) {
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
-                    text = section.date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)),
+                    text = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM).format(section.date),
                     color = Color.Black,
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic,
