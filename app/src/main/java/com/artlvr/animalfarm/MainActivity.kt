@@ -7,12 +7,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.artlvr.animalfarm.book.AnimalFarmBook
 import com.artlvr.animalfarm.networking.ArtlvrService
 import com.artlvr.animalfarm.networking.AsyncAnimalFarmBook
-import com.artlvr.animalfarm.poetry.PoetryPage
 import com.artlvr.animalfarm.poetry.PoetryViewModel
+import com.artlvr.animalfarm.poetry.RefreshablePoetryPage
 import com.artlvr.animalfarm.ui.theme.AnimalFarmTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,10 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PoetryPage(
-                        poetry = viewModel.poetry,
-                        initialSection = preferences.getInt(preferredPoetrySectionKey, 0)
-                    ) {
+                    RefreshablePoetryPage(viewModel = viewModel, initialSection = preferences.getInt(preferredPoetrySectionKey, 0)) {
                         with(preferences.edit()) {
                             putInt(preferredPoetrySectionKey, it)
                             apply()
