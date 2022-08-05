@@ -3,7 +3,7 @@ package com.artlvr.animalfarm.book
 import com.artlvr.animalfarm.poetry.Poetry
 import java.util.GregorianCalendar
 
-class AnimalFarmBook {
+class AnimalFarmBook : SyncPoetryProviding {
     companion object {
         fun makePoetry(): Poetry {
             return Poetry(
@@ -73,4 +73,6 @@ class AnimalFarmBook {
             )
         }
     }
+
+    override fun getPoetry(): Poetry = makePoetry()
 }

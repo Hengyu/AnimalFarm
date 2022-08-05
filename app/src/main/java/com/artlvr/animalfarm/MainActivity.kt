@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.artlvr.animalfarm.book.AnimalFarmBook
 import com.artlvr.animalfarm.networking.ArtlvrService
 import com.artlvr.animalfarm.networking.AsyncAnimalFarmBook
 import com.artlvr.animalfarm.poetry.PoetryPage
@@ -16,7 +17,8 @@ import com.artlvr.animalfarm.ui.theme.AnimalFarmTheme
 
 class MainActivity : ComponentActivity() {
     private val viewModel: PoetryViewModel = PoetryViewModel(
-        poetryProviding = AsyncAnimalFarmBook(service = ArtlvrService.default)
+        local = AnimalFarmBook(),
+        remote = AsyncAnimalFarmBook(service = ArtlvrService.default)
     )
 
     private val preferredPoetrySectionKey: String = "preferredPoetrySection"
