@@ -14,8 +14,10 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,12 +38,20 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import java.text.SimpleDateFormat
+import kotlin.math.min
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun PoetryPage(poetry: Poetry) {
+fun PoetryPage(poetry: Poetry, initialSection: Int = 0, onSectionChanged: (Int) -> Unit = {}) {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-        val pagerState = rememberPagerState()
+        val pagerState = rememberPagerState(initialPage = min(initialSection, poetry.sections.count()))
+
+        LaunchedEffect(key1 = poetry.hashCode()) {
+            snapshotFlow { pagerState.currentPage }.collect { page ->
+                onSectionChanged(page)
+            }
+        }
+
         val (pager, indicator) = createRefs()
         val size = remember { mutableStateOf(IntSize.Zero) }
 
@@ -99,9 +109,11 @@ fun PoetryPage(poetry: Poetry) {
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
                     text = section.content,
-                    modifier = Modifier.fillMaxWidth().semantics {
-                        contentDescription = section.content
-                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .semantics {
+                            contentDescription = section.content
+                        },
                     color = Color.DarkGray,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Normal,

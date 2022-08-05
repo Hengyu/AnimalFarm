@@ -1,5 +1,6 @@
 package com.artlvr.animalfarm
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,9 @@ class MainActivity : ComponentActivity() {
         poetryProviding = AsyncAnimalFarmBook(service = ArtlvrService.default)
     )
 
+    private val preferredPoetrySectionKey: String = "preferredPoetrySection"
+    private val preferences: SharedPreferences by lazy { this.getPreferences(MODE_PRIVATE) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -27,7 +31,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PoetryPage(poetry = viewModel.poetry)
+                    PoetryPage(
+                        poetry = viewModel.poetry,
+                        initialSection = preferences.getInt(preferredPoetrySectionKey, 0)
+                    ) {
+                        with(preferences.edit()) {
+                            putInt(preferredPoetrySectionKey, it)
+                            apply()
+                        }
+                    }
                 }
             }
         }
