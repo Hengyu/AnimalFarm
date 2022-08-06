@@ -11,7 +11,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class PoetryViewModel(private val local: SyncPoetryProviding, private val remote: AsyncPoetryProviding) : ViewModel() {
+class PoetryViewModel(
+    private val local: SyncPoetryProviding,
+    private val remote: AsyncPoetryProviding
+) : ViewModel() {
     private val _isFetching: MutableStateFlow<Boolean> = MutableStateFlow(false)
     var poetry: Poetry by mutableStateOf(local.getPoetry())
     val isFetching: StateFlow<Boolean> = _isFetching

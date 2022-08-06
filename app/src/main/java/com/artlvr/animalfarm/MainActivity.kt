@@ -34,15 +34,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    RefreshablePoetryPage(viewModel = viewModel, initialSection = preferences.getInt(preferredPoetrySectionKey, 0)) {
-                        with(preferences.edit()) {
-                            putInt(preferredPoetrySectionKey, it)
-                            apply()
-                        }
-                    }
+                    RefreshablePoetryPage(
+                        viewModel = viewModel,
+                        initialSection = getPreferredSection(),
+                        onSectionChanged = ::savePreferredSection
+                    )
                 }
             }
         }
         viewModel.fetchPoetry()
+    }
+
+    private fun getPreferredSection(): Int = preferences.getInt(preferredPoetrySectionKey, 0)
+
+    private fun savePreferredSection(index: Int) {
+        with(preferences.edit()) {
+            putInt(preferredPoetrySectionKey, index)
+            apply()
+        }
     }
 }
