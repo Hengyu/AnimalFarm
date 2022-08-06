@@ -12,8 +12,8 @@ The app is available on the [Google Play](https://play.google.com/store/apps/det
 
 The project has been built up using the following tools:
 
-- [`Jetpack Compose`](https://developer.android.com/jetpack/compose): A framework to build user interface in a declaritive fashion;
-- [`Kotlin`](https://kotlinlang.org): A programming language for build Android projects.
+- [`Jetpack Compose`](https://developer.android.com/jetpack/compose): A framework to build user interface in a declarative fashion;
+- [`Kotlin`](https://kotlinlang.org): A modern statically typed programming language that helps boost productivity, developer satisfaction, and code safety.
 
 ## License
 
