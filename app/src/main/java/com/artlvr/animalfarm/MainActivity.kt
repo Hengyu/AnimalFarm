@@ -5,24 +5,21 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import com.artlvr.animalfarm.book.AnimalFarmBook
-import com.artlvr.animalfarm.networking.ArtlvrService
-import com.artlvr.animalfarm.networking.AsyncAnimalFarmBook
 import com.artlvr.animalfarm.poetry.PoetryViewModel
 import com.artlvr.animalfarm.poetry.RefreshablePoetryPage
 import com.artlvr.animalfarm.ui.theme.AnimalFarmTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel: PoetryViewModel = PoetryViewModel(
-        local = AnimalFarmBook(),
-        remote = AsyncAnimalFarmBook(service = ArtlvrService.default)
-    )
+    private val viewModel: PoetryViewModel by viewModels()
 
     private val preferredPoetrySectionKey: String = "preferredPoetrySection"
     private val preferences: SharedPreferences by lazy { this.getPreferences(MODE_PRIVATE) }

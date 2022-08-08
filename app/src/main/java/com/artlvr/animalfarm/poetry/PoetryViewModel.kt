@@ -7,11 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.artlvr.animalfarm.book.SyncPoetryProviding
 import com.artlvr.animalfarm.networking.AsyncPoetryProviding
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PoetryViewModel(
+@HiltViewModel
+class PoetryViewModel @Inject constructor(
     private val local: SyncPoetryProviding,
     private val remote: AsyncPoetryProviding
 ) : ViewModel() {
