@@ -1,5 +1,6 @@
 package com.artlvr.animalfarm.poetry
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,7 +21,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -42,7 +45,12 @@ import kotlin.math.min
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun PoetryPage(poetry: Poetry, initialSection: Int = 0, onSectionChanged: (Int) -> Unit = {}) {
+fun PoetryPage(
+    poetry: Poetry,
+    initialSection: Int = 0,
+    onSectionChanged: (Int) -> Unit = {},
+    onLongPress: (Offset) -> Unit = {}
+) {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = min(initialSection, poetry.sections.count()))
 
@@ -67,6 +75,9 @@ fun PoetryPage(poetry: Poetry, initialSection: Int = 0, onSectionChanged: (Int) 
                 }
                 .semantics {
                     contentDescription = "pager"
+                }
+                .pointerInput(Unit) {
+                    detectTapGestures(onLongPress = onLongPress)
                 },
             state = pagerState
         ) { page ->
