@@ -98,6 +98,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     kapt 'com.google.dagger:hilt-android-compiler:2.43.2'
+    testImplementation 'io.mockk:mockk:1.12.5'
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
