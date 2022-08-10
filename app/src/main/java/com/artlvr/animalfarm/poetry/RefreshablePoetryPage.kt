@@ -16,11 +16,11 @@ fun RefreshablePoetryPage(
     onSectionChanged: (Int) -> Unit = {},
     onLongPress: (Offset) -> Unit = {}
 ) {
-    val isRefreshing by viewModel.isFetching.collectAsState()
+    val isRefreshing by viewModel.isLoading.collectAsState()
 
     SwipeRefresh(
         state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
-        onRefresh = { viewModel.fetchPoetry() }
+        onRefresh = { viewModel.loadPoetry() }
     ) {
         PoetryPage(
             poetry = viewModel.poetry,

@@ -18,18 +18,18 @@ class PoetryViewModel @Inject constructor(
     private val local: SyncPoetryProviding,
     private val remote: AsyncPoetryProviding
 ) : ViewModel() {
-    private val _isFetching: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     var poetry: Poetry by mutableStateOf(local.getPoetry())
-    val isFetching: StateFlow<Boolean> = _isFetching
+    val isLoading: StateFlow<Boolean> = _isLoading
 
-    fun fetchPoetry() {
-        _isFetching.value = true
+    fun loadPoetry() {
+        _isLoading.value = true
         viewModelScope.launch {
             val result = remote.getPoetry()
             if (result.isSuccess) {
                 poetry = result.getOrThrow()
             }
-            _isFetching.value = false
+            _isLoading.value = false
         }
     }
 }

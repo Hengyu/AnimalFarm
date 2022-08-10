@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import com.artlvr.animalfarm.poetry.PoetryViewModel
@@ -42,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        viewModel.fetchPoetry()
+        viewModel.loadPoetry()
     }
 
     private fun getPreferredSection(): Int = preferences.getInt(preferredPoetrySectionKey, 0)
