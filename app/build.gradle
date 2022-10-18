@@ -91,6 +91,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.constraintlayout:constraintlayout-compose:1.0.1'
     implementation 'androidx.activity:activity-compose:1.6.0'
+    implementation "com.datadoghq:dd-sdk-android:1.14.1"
     implementation 'com.google.accompanist:accompanist-pager:0.25.0'
     implementation 'com.google.accompanist:accompanist-pager-indicators:0.25.0'
     implementation 'com.google.accompanist:accompanist-swiperefresh:0.25.0'

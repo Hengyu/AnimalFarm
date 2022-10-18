@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.artlvr.animalfarm.book.SyncPoetryProviding
+import com.artlvr.animalfarm.logging.logger
 import com.artlvr.animalfarm.networking.AsyncPoetryProviding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,6 +24,7 @@ class PoetryViewModel @Inject constructor(
     val isLoading: StateFlow<Boolean> = _isLoading
 
     fun loadPoetry() {
+        logger.d("Start loading poetry")
         _isLoading.value = true
         viewModelScope.launch {
             val result = remote.getPoetry()

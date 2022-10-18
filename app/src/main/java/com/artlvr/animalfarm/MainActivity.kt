@@ -11,6 +11,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import com.artlvr.animalfarm.logging.logger
 import com.artlvr.animalfarm.poetry.PoetryViewModel
 import com.artlvr.animalfarm.poetry.RefreshablePoetryPage
 import com.artlvr.animalfarm.ui.theme.AnimalFarmTheme
@@ -51,6 +52,7 @@ class MainActivity : ComponentActivity() {
             putInt(preferredPoetrySectionKey, index)
             apply()
         }
+        logger.d("Poetry section did update to $index")
     }
 
     private fun showShareSheet(offset: Offset) {
@@ -63,5 +65,7 @@ class MainActivity : ComponentActivity() {
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
+
+        logger.d("Start share activity with poetry by section $section")
     }
 }
