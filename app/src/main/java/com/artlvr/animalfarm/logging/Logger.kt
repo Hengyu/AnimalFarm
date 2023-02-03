@@ -10,7 +10,7 @@ val logger = Logger.Builder()
     .build()
 
 object LoggingConstants {
-    val appId: String = "6a1eb5ff-7bdc-4e20-a5fe-e2213d061e17"
-    val clientToken: String = "pub3811aaccd656a0c7c20fc3d7e06020f2"
-    val environmentName: String = "prod"
+    const val appId: String = "6a1eb5ff-7bdc-4e20-a5fe-e2213d061e17"
+    const val clientToken: String = "pub3811aaccd656a0c7c20fc3d7e06020f2"
+    const val environmentName: String = "prod"
 }
