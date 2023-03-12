@@ -2,6 +2,10 @@
 
 <img src="images/feature.png" align="center" width=320>
 
+![](https://img.shields.io/badge/Android-12.0%2B-71D98D)
+![](https://img.shields.io/badge/Kotlin-7F52FF?logo=Kotlin&logoColor=white)
+![](https://img.shields.io/github/last-commit/hengyu/AnimalFarm)
+
 ## What is it?
 
 An open sourced Android project contains a story book named "Twenty First Century Farm".
