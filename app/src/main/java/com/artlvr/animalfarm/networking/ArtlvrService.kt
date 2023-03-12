@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://artlvr.herokuapp.com"
+private const val BASE_URL = "https://worker.artlvr.com"
 
 val gson = GsonBuilder()
     .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
