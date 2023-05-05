@@ -52,7 +52,8 @@ fun PoetryPage(
     onLongPress: (Offset) -> Unit = {}
 ) {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-        val pagerState = rememberPagerState(initialPage = min(initialSection, poetry.sections.count()))
+        val pagerState =
+            rememberPagerState(initialPage = min(initialSection, poetry.sections.count()))
 
         LaunchedEffect(key1 = poetry.hashCode()) {
             snapshotFlow { pagerState.currentPage }.collect { page ->
@@ -132,7 +133,8 @@ fun PoetryPage(
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
-                    text = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM).format(section.date),
+                    text = SimpleDateFormat.getDateInstance(SimpleDateFormat.MEDIUM)
+                        .format(section.date),
                     color = Color.Black,
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic,

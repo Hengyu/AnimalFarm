@@ -3,7 +3,8 @@ package com.artlvr.animalfarm.networking
 import com.artlvr.animalfarm.poetry.Poetry
 import javax.inject.Inject
 
-class AsyncAnimalFarmBook @Inject constructor(private val service: ArtlvrService) : AsyncPoetryProviding {
+class AsyncAnimalFarmBook @Inject constructor(private val service: ArtlvrService) :
+    AsyncPoetryProviding {
 
     class InvalidName : Throwable(message = "Invalid poetry name")
 

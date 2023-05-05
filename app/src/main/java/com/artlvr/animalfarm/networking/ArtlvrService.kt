@@ -20,7 +20,12 @@ private val retrofit: Retrofit = Retrofit.Builder()
 
 interface ArtlvrService {
     @GET("poetry")
-    suspend fun getPoetry(@Query(value = "name", encoded = true) name: String): Response<PoetryResponse>
+    suspend fun getPoetry(
+        @Query(
+            value = "name",
+            encoded = true
+        ) name: String
+    ): Response<PoetryResponse>
 
     companion object {
         val default: ArtlvrService by lazy {

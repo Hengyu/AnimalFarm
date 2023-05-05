@@ -32,7 +32,12 @@ class MainApplication : Application() {
             .trackLongTasks()
             .useViewTrackingStrategy(null)
             .build()
-        val credentials = Credentials(LoggingConstants.clientToken, LoggingConstants.environmentName, NO_VARIANT, LoggingConstants.appId)
+        val credentials = Credentials(
+            LoggingConstants.clientToken,
+            LoggingConstants.environmentName,
+            NO_VARIANT,
+            LoggingConstants.appId
+        )
         Datadog.initialize(this, credentials, configuration, TrackingConsent.GRANTED)
 
         GlobalRum.registerIfAbsent(RumMonitor.Builder().build())
