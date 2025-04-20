@@ -14,11 +14,9 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @Module
 @InstallIn(ViewModelComponent::class)
 object PoetryModule {
-
     @ViewModelScoped
     @Provides
-    fun provideRemotePoetry(service: ArtlvrService): AsyncPoetryProviding =
-        AsyncAnimalFarmBook(service = service)
+    fun provideRemotePoetry(service: ArtlvrService): AsyncPoetryProviding = AsyncAnimalFarmBook(service = service)
 
     @ViewModelScoped
     @Provides

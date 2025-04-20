@@ -19,21 +19,23 @@ class PoetryPageTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private val mockPoetry = Poetry(
-        name = "Animal Farm",
-        sections = listOf(
-            Poetry.Section(
-                title = "Prefix",
-                content = "Hello",
-                date = GregorianCalendar(2022, 2, 15).time
-            ),
-            Poetry.Section(
-                title = "Section 1",
-                content = "Android Project Ready to Go 🚀",
-                date = GregorianCalendar(2022, 2, 15).time
-            )
+    private val mockPoetry =
+        Poetry(
+            name = "Animal Farm",
+            sections =
+                listOf(
+                    Poetry.Section(
+                        title = "Prefix",
+                        content = "Hello",
+                        date = GregorianCalendar(2022, 2, 15).time,
+                    ),
+                    Poetry.Section(
+                        title = "Section 1",
+                        content = "Android Project Ready to Go 🚀",
+                        date = GregorianCalendar(2022, 2, 15).time,
+                    ),
+                ),
         )
-    )
 
     @Test
     fun useAppContext() {
@@ -45,27 +47,33 @@ class PoetryPageTest {
     @Test
     fun poetrySection_titleDisplayed() {
         setPoetry()
-        composeTestRule.onNodeWithText("Prefix")
+        composeTestRule
+            .onNodeWithText("Prefix")
             .assertIsDisplayed()
     }
 
     @Test
     fun poetrySection_contentDisplayed() {
         setPoetry()
-        composeTestRule.onNodeWithContentDescription("Hello")
+        composeTestRule
+            .onNodeWithContentDescription("Hello")
             .assertIsDisplayed()
     }
 
     @Test
     fun poetrySection_pageScrolled() {
         setPoetry()
-        composeTestRule.onNodeWithContentDescription("pager")
+        composeTestRule
+            .onNodeWithContentDescription("pager")
             .performScrollToIndex(1)
-        composeTestRule.onNodeWithText("Section 1")
+        composeTestRule
+            .onNodeWithText("Section 1")
             .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Prefix")
+        composeTestRule
+            .onNodeWithText("Prefix")
             .assertIsNotDisplayed()
-        composeTestRule.onNodeWithText("Prefix")
+        composeTestRule
+            .onNodeWithText("Prefix")
             .assertExists()
     }
 

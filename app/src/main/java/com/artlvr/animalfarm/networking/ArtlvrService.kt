@@ -9,22 +9,25 @@ import retrofit2.http.Query
 
 private const val BASE_URL = "https://worker.artlvr.com"
 
-val gson = GsonBuilder()
-    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-    .create()
+val gson =
+    GsonBuilder()
+        .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+        .create()
 
-private val retrofit: Retrofit = Retrofit.Builder()
-    .baseUrl(BASE_URL)
-    .addConverterFactory(GsonConverterFactory.create(gson))
-    .build()
+private val retrofit: Retrofit =
+    Retrofit
+        .Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
 
 interface ArtlvrService {
     @GET("poetry")
     suspend fun getPoetry(
         @Query(
             value = "name",
-            encoded = true
-        ) name: String
+            encoded = true,
+        ) name: String,
     ): Response<PoetryResponse>
 
     companion object {

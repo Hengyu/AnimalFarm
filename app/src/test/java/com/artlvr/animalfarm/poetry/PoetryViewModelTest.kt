@@ -27,26 +27,30 @@ class PoetryViewModelTest {
     private val dispatcher = UnconfinedTestDispatcher()
     private val remoteWorkDelay = 20.milliseconds
 
-    private val localPoetry = Poetry(
-        name = "1",
-        sections = listOf(
-            Poetry.Section(
-                title = "title",
-                content = "content",
-                date = GregorianCalendar(2022, 1, 1).time
-            )
+    private val localPoetry =
+        Poetry(
+            name = "1",
+            sections =
+                listOf(
+                    Poetry.Section(
+                        title = "title",
+                        content = "content",
+                        date = GregorianCalendar(2022, 1, 1).time,
+                    ),
+                ),
         )
-    )
-    private val remotePoetry = Poetry(
-        name = "2",
-        sections = listOf(
-            Poetry.Section(
-                title = "title",
-                content = "content",
-                date = GregorianCalendar(2022, 5, 1).time
-            )
+    private val remotePoetry =
+        Poetry(
+            name = "2",
+            sections =
+                listOf(
+                    Poetry.Section(
+                        title = "title",
+                        content = "content",
+                        date = GregorianCalendar(2022, 5, 1).time,
+                    ),
+                ),
         )
-    )
 
     @Before
     fun setup() {
@@ -70,11 +74,12 @@ class PoetryViewModelTest {
     }
 
     @Test
-    fun poetryValue_remote() = runTest {
-        viewModel.loadPoetry()
-        delay(remoteWorkDelay)
-        assertEquals(viewModel.poetry, remotePoetry)
-    }
+    fun poetryValue_remote() =
+        runTest {
+            viewModel.loadPoetry()
+            delay(remoteWorkDelay)
+            assertEquals(viewModel.poetry, remotePoetry)
+        }
 
     @Test
     fun isLoading_idle() {
@@ -83,11 +88,12 @@ class PoetryViewModelTest {
     }
 
     @Test
-    fun isLoading_running() = runTest {
-        val viewModel = PoetryViewModel(local = local, remote = remote)
-        viewModel.loadPoetry()
-        assertTrue(viewModel.isLoading.value)
-        delay(remoteWorkDelay)
-        assertFalse(viewModel.isLoading.value)
-    }
+    fun isLoading_running() =
+        runTest {
+            val viewModel = PoetryViewModel(local = local, remote = remote)
+            viewModel.loadPoetry()
+            assertTrue(viewModel.isLoading.value)
+            delay(remoteWorkDelay)
+            assertFalse(viewModel.isLoading.value)
+        }
 }

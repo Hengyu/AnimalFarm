@@ -5,7 +5,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AnimalFarmBookTest {
-
     private val animalFarm = AnimalFarmBook.makePoetry()
 
     @Test

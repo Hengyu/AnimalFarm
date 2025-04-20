@@ -21,23 +21,25 @@ class MainApplication : Application() {
     }
 
     private fun setupDatadogMonitor() {
-        val configuration = Configuration.Builder(
-            logsEnabled = true,
-            tracesEnabled = true,
-            crashReportsEnabled = true,
-            rumEnabled = true
-        )
-            .useSite(DatadogSite.US1)
-            .trackInteractions()
-            .trackLongTasks()
-            .useViewTrackingStrategy(null)
-            .build()
-        val credentials = Credentials(
-            LoggingConstants.clientToken,
-            LoggingConstants.environmentName,
-            NO_VARIANT,
-            LoggingConstants.appId
-        )
+        val configuration =
+            Configuration
+                .Builder(
+                    logsEnabled = true,
+                    tracesEnabled = true,
+                    crashReportsEnabled = true,
+                    rumEnabled = true,
+                ).useSite(DatadogSite.US1)
+                .trackInteractions()
+                .trackLongTasks()
+                .useViewTrackingStrategy(null)
+                .build()
+        val credentials =
+            Credentials(
+                LoggingConstants.CLIENT_TOKEN,
+                LoggingConstants.ENVIRONMENT_NAME,
+                NO_VARIANT,
+                LoggingConstants.APP_ID,
+            )
         Datadog.initialize(this, credentials, configuration, TrackingConsent.GRANTED)
 
         GlobalRum.registerIfAbsent(RumMonitor.Builder().build())

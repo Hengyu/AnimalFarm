@@ -31,13 +31,13 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colors.background,
                 ) {
                     RefreshablePoetryPage(
                         viewModel = viewModel,
                         initialSection = getPreferredSection(),
                         onSectionChanged = ::savePreferredSection,
-                        onLongPress = ::showShareSheet
+                        onLongPress = ::showShareSheet,
                     )
                 }
             }
@@ -57,11 +57,12 @@ class MainActivity : ComponentActivity() {
 
     private fun showShareSheet(offset: Offset) {
         val section = viewModel.poetry.sections[getPreferredSection()]
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, section.content)
-            type = "text/plain"
-        }
+        val sendIntent: Intent =
+            Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, section.content)
+                type = "text/plain"
+            }
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
