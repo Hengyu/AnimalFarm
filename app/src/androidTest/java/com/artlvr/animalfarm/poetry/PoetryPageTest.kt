@@ -2,12 +2,15 @@ package com.artlvr.animalfarm.poetry
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotDisplayed
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeLeft
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.artlvr.animalfarm.R
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -63,18 +66,21 @@ class PoetryPageTest {
     @Test
     fun poetrySection_pageScrolled() {
         setPoetry()
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val description = context.getString(R.string.poetry_page_description)
+        composeTestRule.onNode(hasContentDescription(description)).assertExists()
         composeTestRule
-            .onNodeWithContentDescription("pager")
-            .performScrollToIndex(1)
+            .onNodeWithText("Prefix")
+            .assertExists()
+        composeTestRule
+            .onNodeWithContentDescription(description)
+            .performTouchInput { swipeLeft() }
         composeTestRule
             .onNodeWithText("Section 1")
             .assertIsDisplayed()
         composeTestRule
             .onNodeWithText("Prefix")
             .assertIsNotDisplayed()
-        composeTestRule
-            .onNodeWithText("Prefix")
-            .assertExists()
     }
 
     private fun setPoetry() {

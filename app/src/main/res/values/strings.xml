@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Animal Farm</string>
+    <string name="poetry_page_description">Horizontal Pager</string>
 </resources>
