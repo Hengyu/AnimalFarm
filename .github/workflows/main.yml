@@ -24,18 +24,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
       - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v4
       - name: Set up JDK environment
         uses: actions/setup-java@v4
         with:
           distribution: corretto
           java-version: 17
+      - name: Unit Test
+        run: ./gradlew test
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: 35
           target: google_apis
           arch: x86_64
           disable-animations: true
-          script: ./gradlew connectedAndroidTest
+          script: ./gradlew connectedCheck
